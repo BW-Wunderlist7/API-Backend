@@ -8,9 +8,9 @@ POST /login
 GET /users
 
 Task
-GET /
+GET /tasks
 GET /:id
-POST /tasks
+POST /edit-tasks
 PUT /:id/update-task
 DELETE /:id
 

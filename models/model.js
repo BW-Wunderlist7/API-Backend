@@ -7,6 +7,7 @@ module.exports = {
   getUsers,
   // TASKS
   getTasks,
+  getTaskId,
   addTask,
   updateTask,
   removeTask,
@@ -35,7 +36,7 @@ function login(email) {
 }
 // GetUsers
 function getUsers() {
-  return db("users").select("id", "email", "password");
+  return db("users").select("id", "email");
 }
 // ** Edit Password
 // ** Retrieve Password
@@ -43,7 +44,11 @@ function getUsers() {
 // TASKS
 // GET TASK
 function getTasks() {
-  return db("tasks");
+  return db("tasks").orderBy("id");
+}
+// GET TASK BY ID
+function getTaskId(id) {
+  return db("tasks").where(id);
 }
 // ADD TASK
 function addTask(taskData) {
@@ -53,7 +58,7 @@ function addTask(taskData) {
 function updateTask(id, taskData) {
   return db("tasks")
     .where(id)
-    .insert(taskData);
+    .update(taskData);
 }
 // DELETE TASK
 function removeTask(id) {
