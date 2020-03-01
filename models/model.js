@@ -30,15 +30,12 @@ function register(userData) {
 }
 // Login
 
-function login(id) {
-  return db("users")
-    .select("id", "email")
-    .where({ id })
-    .first();
+function login(email) {
+  return db("users").where(email);
 }
 // GetUsers
 function getUsers() {
-  return db("users").select("id", "email");
+  return db("users").select("id", "email", "password");
 }
 // ** Edit Password
 // ** Retrieve Password

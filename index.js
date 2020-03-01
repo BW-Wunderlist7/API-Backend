@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const userRouter = require("./routers/user-router");
 const server = express();
 
 // make sure that helmet is hiding the powered by
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
+server.use("/api", userRouter);
 
 //add in the routers here once built
 
