@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const userRouter = require("./routers/user-router");
-const taskRouter = require("./routers/task-router");
+const { taskRouter } = require("./routers/index");
 const profileRouter = require("./routers/profile-router");
 const tagRouter = require("./routers/tag-router");
 const server = express();

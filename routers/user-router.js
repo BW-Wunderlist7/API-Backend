@@ -2,11 +2,12 @@ const express = require("express");
 const userModel = require("../models/model");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../token/token-generator");
+const authMiddleware = require("../middleware/auth");
 const helmet = require("helmet");
 const router = express();
 router.use(helmet());
 
-router.get("/users", (req, res) => {
+router.get("/users", authMiddleware, (req, res) => {
   userModel
     .getUsers()
     .then(users => {

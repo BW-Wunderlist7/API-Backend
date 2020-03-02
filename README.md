@@ -8,26 +8,26 @@ Jess = ⭕
 ## ENDPOINTS
 
 User
-POST /register ✅
-POST /login ✅
-GET /users ✅
+POST /register ✅⭕
+POST /login ✅⭕
+GET /users ✅⭕
 
 Task
-GET /tasks ✅
-GET /tasks/:id ✅
-POST /add-tasks ✅
-PUT /tasks/:id ✅
-DELETE /task:id ✅
+GET /tasks ✅⭕
+GET /tasks/:id ✅⭕
+POST /tasks ✅⭕
+PUT /tasks/:id ✅⭕
+DELETE /task:id ✅⭕
 
 Tag
-GET /tags ✅
+GET /tags ✅⭕
 GET /tag/:id
-POST /tags ✅
-PUT /tags/:id ✅
-DELETE /tags/:id ✅
+POST /tags ✅ ⭕
+PUT /tags/:id ✅ ⭕
+DELETE /tags/:id ✅ ⭕
 
 Profile
-GET /profile ✅
-POST /profile ✅
-PUT /profile/:id ✅
-DELETE /profile/:id ✅
+GET /profile ✅⭕
+POST /profile ✅⭕
+PUT /profile/:id ✅⭕
+DELETE /profile/:id ✅⭕
