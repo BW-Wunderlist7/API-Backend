@@ -7,6 +7,7 @@ module.exports = {
   getUsers,
   // TASKS
   getTasks,
+  getTaskId,
   addTask,
   updateTask,
   removeTask,
@@ -30,11 +31,8 @@ function register(userData) {
 }
 // Login
 
-function login(id) {
-  return db("users")
-    .select("id", "email")
-    .where({ id })
-    .first();
+function login(email) {
+  return db("users").where(email);
 }
 // GetUsers
 function getUsers() {
@@ -46,7 +44,11 @@ function getUsers() {
 // TASKS
 // GET TASK
 function getTasks() {
-  return db("tasks");
+  return db("tasks").orderBy("id");
+}
+// GET TASK BY ID
+function getTaskId(id) {
+  return db("tasks").where(id);
 }
 // ADD TASK
 function addTask(taskData) {
@@ -56,7 +58,7 @@ function addTask(taskData) {
 function updateTask(id, taskData) {
   return db("tasks")
     .where(id)
-    .insert(taskData);
+    .update(taskData);
 }
 // DELETE TASK
 function removeTask(id) {
@@ -78,7 +80,7 @@ function addTag(tagData) {
 function updateTag(id, tagData) {
   return db("tags")
     .where(id)
-    .insert(tagData);
+    .update(tagData);
 }
 // DELETE TASK
 function removeTag(id) {
@@ -90,22 +92,22 @@ function removeTag(id) {
 // PROFILE
 // GET PROFILE
 function getProfile() {
-  return db("profile");
+  return db("profiles");
 }
 // ADD PROFILE
 function addProfile(profileData) {
-  return db("profile").insert(profileData);
+  return db("profiles").insert(profileData);
 }
 // UPDATE PROFILE
 function updateProfile(id, profileData) {
-  return db("profile")
+  return db("profiles")
     .where(id)
-    .insert(profileData);
+    .update(profileData);
 }
 
 // DELETE PROFILE
 function removeProfile(id) {
-  return db("profile")
+  return db("profiles")
     .where(id)
     .delete();
 }
