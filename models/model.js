@@ -92,22 +92,22 @@ function removeTag(id) {
 // PROFILE
 // GET PROFILE
 function getProfile() {
-  return db("profile");
+  return db("profiles");
 }
 // ADD PROFILE
 function addProfile(profileData) {
-  return db("profile").insert(profileData);
+  return db("profiles").insert(profileData);
 }
 // UPDATE PROFILE
 function updateProfile(id, profileData) {
-  return db("profile")
+  return db("profiles")
     .where(id)
-    .insert(profileData);
+    .update(profileData);
 }
 
 // DELETE PROFILE
 function removeProfile(id) {
-  return db("profile")
+  return db("profiles")
     .where(id)
     .delete();
 }

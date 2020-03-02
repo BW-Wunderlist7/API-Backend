@@ -1,28 +1,33 @@
 # API-Backend
 
+# CheckMark
+
+Matthew = ✅
+Jess = ⭕
+
 ## ENDPOINTS
 
 User
-POST /register
-POST /login
-GET /users
+POST /register ✅
+POST /login ✅
+GET /users ✅
 
 Task
-GET /tasks
-GET /:id
-POST /edit-tasks
-PUT /:id/update-task
-DELETE /:id
+GET /tasks ✅
+GET /tasks/:id ✅
+POST /add-tasks ✅
+PUT /tasks/:id ✅
+DELETE /task:id ✅
 
 Tag
-GET /
-GET /:id
+GET /tag
+GET /tag/:id
 POST /tag
-PUT /:id/update-tag
+PUT /update-tag/:id
 DELETE /:id
 
 Profile
-GET /
-POST /profile
-PUT /:id/update-profile
-DELETE /:id
+GET /profile ✅
+POST /profile ✅
+PUT /profile/:id ✅
+DELETE /profile/:id ✅
