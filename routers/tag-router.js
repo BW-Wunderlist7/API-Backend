@@ -1,8 +1,6 @@
 const express = require("express");
 const tagModel = require("../models/model");
-const helmet = require("helmet");
 const router = express();
-router.use(helmet());
 
 router.get("/tags", (req, res) => {
   tagModel
