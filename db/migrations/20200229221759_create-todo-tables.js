@@ -33,6 +33,7 @@ exports.up = function(knex) {
       tasks.string("task").notNullable();
       tasks.string("description");
       tasks.date("date").notNullable();
+      tasks.boolean("completed").defaultTo("false");
       tasks
         .integer("user_id")
         .unsigned()
