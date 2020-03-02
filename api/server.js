@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const server = express();
+// require("dotenv").config();
 
 // make sure that helmet is hiding the powered by
 server.use(helmet());
