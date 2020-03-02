@@ -20,7 +20,7 @@ PUT /tasks/:id ✅
 DELETE /task:id ✅
 
 Tag
-GET /tag
+GET /tags
 GET /tag/:id
 POST /tag
 PUT /update-tag/:id

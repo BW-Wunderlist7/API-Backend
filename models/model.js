@@ -80,7 +80,7 @@ function addTag(tagData) {
 function updateTag(id, tagData) {
   return db("tags")
     .where(id)
-    .insert(tagData);
+    .update(tagData);
 }
 // DELETE TASK
 function removeTag(id) {

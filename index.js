@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const userRouter = require("./routers/user-router");
 const taskRouter = require("./routers/task-router");
 const profileRouter = require("./routers/profile-router");
+const tagRouter = require("./routers/tag-router");
 const server = express();
 
 // make sure that helmet is hiding the powered by
@@ -13,6 +14,7 @@ server.use(express.json());
 server.use("/api", userRouter);
 server.use("/api", taskRouter);
 server.use("/api", profileRouter);
+server.use("/api", tagRouter);
 
 //add in the routers here once built
 
