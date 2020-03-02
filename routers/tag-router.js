@@ -14,6 +14,23 @@ router.get("/tags", (req, res) => {
     });
 });
 
+//⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇ GET TAG BY ID ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
+router.get("/tags/:id", (req, res) => {
+  const { id } = req.params;
+  tagModel
+    .getTagId({ id })
+    .then(tag => {
+      res.status(200).json({ tag });
+    })
+    .catch(err => {
+      console.log("get tag by id error", err);
+      res
+        .status(500)
+        .json({ errorMessage: `cannot get tag by id at this time` });
+    });
+});
+// ⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆
+
 router.post("/tags", (req, res) => {
   const newTag = req.body;
   console.log(req.body);
