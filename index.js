@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const userRouter = require("./routers/user-router");
-const taskRouter = require("./routers/task-router");
-const profileRouter = require("./routers/profile-router");
-const tagRouter = require("./routers/tag-router");
+const { userRouter } = require("./routers");
+const { taskRouter } = require("./routers");
+const { profileRouter } = require("./routers");
+const { tagRouter } = require("./routers");
 const server = express();
 
 // make sure that helmet is hiding the powered by

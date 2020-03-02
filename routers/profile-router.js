@@ -38,7 +38,7 @@ router.put("/profile/:id", (req, res) => {
     .updateProfile({ id }, newProfile)
     .then(updated => {
       res
-        .status(201)
+        .status(200)
         .json({ message: `successfully edited your profile data` });
     })
     .catch(err => {
@@ -54,7 +54,7 @@ router.delete("/profile/:id", (req, res) => {
   profileModel
     .removeProfile({ id })
     .then(erase => {
-      res.status(201).json({ erase });
+      res.status(200).json({ erase });
     })
     .catch(err => {
       console.log("delete profile error", err);

@@ -2,8 +2,6 @@ const express = require("express");
 const taskModel = require("../models/model");
 const helmet = require("helmet");
 const router = express();
-
-router.use(express.json());
 router.use(helmet());
 
 router.get("/tasks", (req, res) => {
@@ -33,7 +31,7 @@ router.get("/tasks/:id", (req, res) => {
     });
 });
 
-router.post("/add-tasks", (req, res) => {
+router.post("/tasks", (req, res) => {
   const newTask = req.body;
   taskModel
     .addTask(newTask)
@@ -54,7 +52,7 @@ router.put("/tasks/:id", (req, res) => {
   taskModel
     .updateTask({ id }, update)
     .then(task => {
-      res.status(201).json({ message: `your task has been updated` });
+      res.status(200).json({ message: `your task has been updated` });
     })
     .catch(err => {
       console.log("edit task error", err);

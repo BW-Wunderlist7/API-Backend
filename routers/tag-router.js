@@ -1,8 +1,8 @@
 const express = require("express");
 const tagModel = require("../models/model");
+const helmet = require("helmet");
 const router = express();
-
-router.use(express.json());
+router.use(helmet());
 
 router.get("/tags", (req, res) => {
   tagModel
@@ -35,7 +35,7 @@ router.put("/tags/:id", (req, res) => {
   tagModel
     .updateTag({ id }, updateTag)
     .then(updatedTag => {
-      res.status(201).json({ message: "your tag has been updated" });
+      res.status(200).json({ message: "your tag has been updated" });
     })
     .catch(err => {
       console.log("edit tags error", err);
