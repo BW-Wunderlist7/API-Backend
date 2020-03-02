@@ -1,6 +1,6 @@
 # API-Backend
 
-# CheckMark
+# CheckMark for Independent Endpoint Validation
 
 Matthew = ✅
 Jess = ⭕
@@ -20,11 +20,11 @@ PUT /tasks/:id ✅
 DELETE /task:id ✅
 
 Tag
-GET /tags
+GET /tags ✅
 GET /tag/:id
-POST /tag
-PUT /update-tag/:id
-DELETE /:id
+POST /tags ✅
+PUT /tags/:id ✅
+DELETE /tags/:id ✅
 
 Profile
 GET /profile ✅
