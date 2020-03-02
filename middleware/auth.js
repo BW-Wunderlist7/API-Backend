@@ -7,13 +7,13 @@ module.exports = (req, res, next) => {
   if (authorization) {
     jwt.verify(authorization, jwtSecret, (err, decodedToken) => {
       if (err) {
-        res.status(401).json({ message: "No entry!" });
+        res.status(401).json({ message: "Token is invalid" });
       } else {
-        res.decodedToken = decodedToken;
+        req.user = { id: decodedToken.userId };
         next();
       }
     });
   } else {
-    res.status(400).json({ message: "No / wrong credentials provided" });
+    res.status(401).json({ errorMessage: "Your token is missing" });
   }
 };
