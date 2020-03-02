@@ -2,9 +2,9 @@ const express = require("express");
 const userModel = require("../models/model");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../token/token-generator");
-
+const helmet = require("helmet");
 const router = express();
-router.use(express.json());
+router.use(helmet());
 
 router.get("/users", (req, res) => {
   userModel

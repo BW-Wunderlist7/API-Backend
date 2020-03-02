@@ -1,8 +1,8 @@
 const express = require("express");
 const profileModel = require("../models/model");
+const helmet = require("helmet");
 const router = express();
-
-router.use(express.json());
+router.use(helmet());
 
 router.get("/profile", (req, res) => {
   profileModel

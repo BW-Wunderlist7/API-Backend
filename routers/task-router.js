@@ -1,6 +1,10 @@
 const express = require("express");
 const taskModel = require("../models/model");
+const helmet = require("helmet");
 const router = express();
+
+router.use(express.json());
+router.use(helmet());
 
 router.get("/tasks", (req, res) => {
   taskModel
