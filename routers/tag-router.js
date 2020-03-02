@@ -16,6 +16,7 @@ router.get("/tags", (req, res) => {
 
 router.post("/tags", (req, res) => {
   const newTag = req.body;
+  console.log(req.body);
   tagModel
     .addTag(newTag)
     .then(tag => {

@@ -1,11 +1,78 @@
 # API-Backend
 
+## DEPLOYED SITE
+
+https://wunderlist7.herokuapp.com/
+
+## POSTMAN TESTING DOCUMENTER
+
+https://documenter.getpostman.com/view/10342263/SzKbLuyZ?version=latest
+
+## ENDPOINTS
+
+| USER Feature        | Method | URL              | TESTED |
+| :------------------ | :----- | :--------------- | :----- |
+| Login as user       | POST   | /api/login       | ✅     |
+| Add a user          | POST   | /api/register ✅ |
+| Get a list of users | GET    | /api/users       | ✅     |
+
+| PROFILE Feature  | Method | URL              | TESTED |
+| :--------------- | :----- | :--------------- | :----- |
+| Get profile info | GET    | /api/profile     | ✅     |
+| Post to profile  | POST   | /api/profile     | ✅     |
+| Update profile   | PUT    | /api/profile/:id | ✅     |
+| Delete profile   | DELETE | /api/profile/:id | ✅     |
+
+| TASK Feature        | Method | URL            | TESTED |
+| :------------------ | :----- | :------------- | :----- |
+| Get a list of tasks | GET    | /api/tasks     | ✅     |
+| Get task by id      | GET    | /api/tasks/:id | ✅     |
+| Post a new task     | POST   | /api/tasks     | ✅     |
+| Update a task       | PUT    | /api/tasks/:id | ✅     |
+| Delete a task       | DELETE | /api/tasks/:id | ✅     |
+
+| TAG Feature        | Method | URL           | TESTED |
+| :----------------- | :----- | :------------ | :----- |
+| Get a list of tags | GET    | /api/tags     | ✅     |
+| Get tag by id      | GET    | /api/tags/:id | ✅     |
+| Post a new tag     | POST   | /api/tags     | ✅     |
+| Update a tag       | PUT    | /api/tags/:id | ✅     |
+| Delete a tag       | DELETE | /api/tags/:id | ✅     |
+
+# TO DO ... BUT HAVENT
+
+- GET /tag/:id
+- Write invalid ID endpoints
+- Testing (code)
+- Create: demo profile (to be proud of)
+- Dry up code - add middleware (CodeClimate reference)
+- Delete our Console.log(errs)
+
+# DOING
+
+- Activate middleware DUE: Middle of week
+  - Passs user-id through token in decodedToken middleware, which will allow access to user-id (without State)
+
+# DONE
+
+- Testing (Postman)
+- Deploy to Heroku!
+- Add routers to our router index & export as one to index.js
+- Write Middleware for accessing routes
+
+# STRETCH TO DO
+
+- SQL query that lets us sort by date
+- Attach Tags -> Tasks (task_tags)
+- Create query that joins a user's data (Profile, task, tags) `GET all`
+- Cloudinary - for Avatar upload
+- Stripe Integration - for paid version
+- Reset Password
+
 # CheckMark for Independent Endpoint Validation
 
 Matthew = ✅
 Jess = ⭕
-
-## ENDPOINTS
 
 User
 POST /register ✅⭕
@@ -31,45 +98,3 @@ GET /profile ✅⭕
 POST /profile ✅⭕
 PUT /profile/:id ✅⭕
 DELETE /profile/:id ✅⭕
-
-| USER Feature        | Method | URL           |
-| :------------------ | :----- | :------------ |
-| Login as user       | POST   | /api/login    |
-| Add a user          | POST   | /api/register |
-| Get a list of users | GET    | /api/users    |
-
-| TASK Feature        | Method | URL            |
-| :------------------ | :----- | :------------- |
-| Get a list of tasks | GET    | /api/tasks     |
-| Get task by id      | GET    | /api/tasks/:id |
-| Post a new task     | POST   | /api/tasks     |
-| Update a task       | PUT    | /api/tasks/:id |
-| Delete a task       | DELETE | /api/tasks/:id |
-
-| TAG Feature        | Method | URL           |
-| :----------------- | :----- | :------------ |
-| Get a list of tags | GET    | /api/tags     |
-| Get tag by id      | GET    | /api/tags/:id |
-| Post a new tag     | POST   | /api/tags     |
-| Update a tag       | PUT    | /api/tags/:id |
-| Delete a tag       | DELETE | /api/tags/:id |
-
-# TO DO ... BUT HAVENT
-
-- Delete our Console.log(errs)
-- dry up code - add middleware (CodeClimate reference)
-- Write our invalid id endpoints
-- Activate middleware DUE: Middle of week
-  - Figure out a way to passs user-id through token in decodedToken middleware, which will allow access to user-id (without State).
-- Deploy to Heroku!
-- Postgres walkthrough
-- Testing
-- Create: demo profile (to be proud of)
-
-# DOING
-
-- Add routers to our router index & export as one to index.js
-
-# DONE
-
-- Write Middleware for accessing routes
