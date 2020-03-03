@@ -13,6 +13,7 @@ module.exports = {
   removeTask,
   // TAGS
   getTags,
+  getTagId,
   addTag,
   updateTag,
   removeTag,
@@ -72,6 +73,14 @@ function removeTask(id) {
 function getTags() {
   return db("tags");
 }
+
+//⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇ GET TAG BY ID ⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇⬇
+// GET TAG BY ID
+function getTagId(id) {
+  return db("tags").where(id);
+}
+// ⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆
+
 // ADD TAGS
 function addTag(tagData) {
   return db("tags").insert(tagData);
