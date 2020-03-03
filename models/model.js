@@ -121,5 +121,12 @@ function removeProfile(id) {
     .delete();
 }
 
+// Get All User Info
+function getAll() {
+  return db("users")
+    .join("tasks", "tasks.user_id", "users.id")
+    .select("*");
+}
+
 // ** STRETCH = TASK_TAG
 // ATTACH TAG AND TASK!
