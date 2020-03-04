@@ -3,9 +3,10 @@ const profileModel = require("../models/model");
 const middleware = require("../middleware/auth");
 const router = express();
 
-router.get("/profile", (req, res) => {
+router.get("/profile", middleware, (req, res) => {
+  const id = req.user.id;
   profileModel
-    .getProfile()
+    .getProfile(id)
     .then(profile => {
       res.status(200).json({ profile });
     })

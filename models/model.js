@@ -5,6 +5,7 @@ module.exports = {
   register,
   login,
   getUsers,
+  getAll,
   // TASKS
   getTasks,
   getTaskId,
@@ -49,8 +50,10 @@ function getUsers() {
 
 // TASKS
 // GET TASK
-function getTasks() {
-  return db("tasks").orderBy("id");
+function getTasks(id) {
+  return db("tasks")
+    .orderBy("id")
+    .where({ user_id: id });
 }
 // GET TASK BY ID
 function getTaskId(id) {
@@ -112,8 +115,8 @@ function removeTag(id) {
 
 // PROFILE
 // GET PROFILE
-function getProfile() {
-  return db("profiles");
+function getProfile(id) {
+  return db("profiles").where({ user_id: id });
 }
 // ADD PROFILE
 function addProfile(id, profileData) {
@@ -141,9 +144,7 @@ function removeProfile(id) {
 
 // Get All User Info
 function getAll() {
-  return db("users")
-    .join("tasks", "tasks.user_id", "users.id")
-    .select("*");
+  return db("users", "profiles", "tasks", "avatar").select("*");
 }
 
 // GET AVATAR BY ID
@@ -152,8 +153,8 @@ function avatarURL(id) {
 }
 
 // GET AVATAR
-function avatar() {
-  return db("avatar");
+function avatar(id) {
+  return db("avatar").where({ user_id: id });
 }
 
 // POST AVATAR
