@@ -3,9 +3,10 @@ const taskModel = require("../models/model");
 const middleware = require("../middleware/auth");
 const router = express();
 
-router.get("/tasks", (req, res) => {
+router.get("/tasks", middleware, (req, res) => {
+  const id = req.user.id;
   taskModel
-    .getTasks()
+    .getTasks(id)
     .then(task => {
       res.status(200).json({ task });
     })

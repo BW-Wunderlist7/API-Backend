@@ -64,9 +64,10 @@ router.get("/avatar/:id", (req, res) => {
     });
 });
 
-router.get("/avatar", (req, res) => {
+router.get("/avatar", middleware, (req, res) => {
+  const id = req.user.id;
   avatarModel
-    .avatar()
+    .avatar(id)
     .then(all => {
       res.status(200).json({ all });
     })
