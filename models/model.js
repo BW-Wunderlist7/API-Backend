@@ -24,6 +24,9 @@ module.exports = {
   updateProfile,
   removeProfile,
   // TASK_TAG
+  taskTag,
+  getTasksTags,
+  // AVATAR
   avatar,
   avatarURL,
   addAvatar,
@@ -62,12 +65,12 @@ function getTaskId(id) {
 // ADD TASK
 function addTask(id, taskData) {
   return db("tasks").insert({
+    user_id: id,
     task: taskData.task,
     description: taskData.description,
     due_date: taskData.due_date,
     timestamp: taskData.timestamp,
-    completed: taskData.completed,
-    user_id: id
+    completed: taskData.completed
   });
 }
 // UPDATE TASK
@@ -178,3 +181,14 @@ function deleteAvatar(id) {
 
 // ** STRETCH = TASK_TAG
 // ATTACH TAG AND TASK!
+function taskTag(taskId, tagId) {
+  return db("tasks_tags").insert({ task_id: taskId, tag_id: tagId });
+}
+
+function getTasksTags(id) {
+  return db("tasks")
+    .select("*")
+    .join("tasks_tags", { "tasks.id": "tasks_tags.task_id" })
+    .join("tags", { "tags.id": "tasks_tags.tag_id" })
+    .where({ user_id: id });
+}

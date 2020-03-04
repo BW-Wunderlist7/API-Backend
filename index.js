@@ -7,6 +7,7 @@ const { taskRouter } = require("./routers");
 const { profileRouter } = require("./routers");
 const { tagRouter } = require("./routers");
 const { avatarRouter } = require("./routers");
+const { taskTagRouter } = require("./routers");
 const helmet = require("helmet");
 const server = express();
 
@@ -19,6 +20,7 @@ server.use("/api", taskRouter);
 server.use("/api", profileRouter);
 server.use("/api", tagRouter);
 server.use("/api", avatarRouter);
+server.use("/api", taskTagRouter);
 
 //add in the routers here once built
 
