@@ -10,11 +10,11 @@ https://documenter.getpostman.com/view/10342263/SzKbLuyZ?version=latest
 
 ## ENDPOINTS
 
-| USER Feature        | Method | URL              | TESTED |
-| :------------------ | :----- | :--------------- | :----- |
-| Login as user       | POST   | /api/login       | ✅     |
-| Add a user          | POST   | /api/register ✅ |
-| Get a list of users | GET    | /api/users       | ✅     |
+| USER Feature        | Method | URL           | TESTED |
+| :------------------ | :----- | :------------ | :----- |
+| Login as user       | POST   | /api/login    | ✅     |
+| Add a user          | POST   | /api/register | ✅     |
+| Get a list of users | GET    | /api/users    | ✅     |
 
 | PROFILE Feature  | Method | URL              | TESTED |
 | :--------------- | :----- | :--------------- | :----- |
@@ -41,20 +41,20 @@ https://documenter.getpostman.com/view/10342263/SzKbLuyZ?version=latest
 
 # TO DO ... BUT HAVENT
 
-- GET /tag/:id
-- Write invalid ID endpoints
-- Testing (code)
 - Create: demo profile (to be proud of)
 - Dry up code - add middleware (CodeClimate reference)
-- Delete our Console.log(errs)
 
 # DOING
 
+- Testing (code)
 - Activate middleware DUE: Middle of week
-  - Passs user-id through token in decodedToken middleware, which will allow access to user-id (without State)
+- Delete our Console.log(errs)
 
 # DONE
 
+- Write invalid ID endpoints
+- Passs user-id through token in decodedToken middleware, which will allow access to user-id (without State)
+- GET /tag/:id
 - Testing (Postman)
 - Deploy to Heroku!
 - Add routers to our router index & export as one to index.js
@@ -62,7 +62,6 @@ https://documenter.getpostman.com/view/10342263/SzKbLuyZ?version=latest
 
 # STRETCH TO DO
 
-- SQL query that lets us sort by date
 - Attach Tags -> Tasks (task_tags)
 - Create query that joins a user's data (Profile, task, tags) `GET all`
 - Cloudinary - for Avatar upload
@@ -88,7 +87,7 @@ DELETE /task:id ✅⭕
 
 Tag
 GET /tags ✅⭕
-GET /tag/:id
+GET /tag/:id ✅
 POST /tags ✅ ⭕
 PUT /tags/:id ✅ ⭕
 DELETE /tags/:id ✅ ⭕

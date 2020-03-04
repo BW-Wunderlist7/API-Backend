@@ -20,7 +20,13 @@ router.get("/tags/:id", (req, res) => {
   tagModel
     .getTagId({ id })
     .then(tag => {
-      res.status(200).json({ tag });
+      if (!tag.length) {
+        res
+          .status(404)
+          .json({ message: "The tag with the specified ID does not exist." });
+      } else {
+        res.status(200).json({ tag });
+      }
     })
     .catch(err => {
       console.log("get tag by id error", err);
