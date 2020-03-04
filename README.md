@@ -52,6 +52,7 @@ https://documenter.getpostman.com/view/10342263/SzKbLuyZ?version=latest
 
 # DONE
 
+- Cloudinary - for Avatar upload
 - Write invalid ID endpoints
 - Passs user-id through token in decodedToken middleware, which will allow access to user-id (without State)
 - GET /tag/:id
@@ -64,7 +65,6 @@ https://documenter.getpostman.com/view/10342263/SzKbLuyZ?version=latest
 
 - Attach Tags -> Tasks (task_tags)
 - Create query that joins a user's data (Profile, task, tags) `GET all`
-- Cloudinary - for Avatar upload
 - Stripe Integration - for paid version
 - Reset Password
 

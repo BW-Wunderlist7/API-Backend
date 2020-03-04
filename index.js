@@ -6,6 +6,7 @@ const { userRouter } = require("./routers");
 const { taskRouter } = require("./routers");
 const { profileRouter } = require("./routers");
 const { tagRouter } = require("./routers");
+const { avatarRouter } = require("./routers");
 const helmet = require("helmet");
 const server = express();
 
@@ -17,6 +18,7 @@ server.use("/api", userRouter);
 server.use("/api", taskRouter);
 server.use("/api", profileRouter);
 server.use("/api", tagRouter);
+server.use("/api", avatarRouter);
 
 //add in the routers here once built
 
@@ -25,7 +27,7 @@ server.get("/", (req, res) => {
 });
 
 // const port = 6300;
-const PORT = process.env.PORT || 6300;
+const PORT = process.env.PORT || 8600;
 
 server.listen(PORT, () => {
   console.log(`server is up and running on port ${PORT}`);
