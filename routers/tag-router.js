@@ -39,11 +39,10 @@ router.get("/tags/:id", (req, res) => {
 
 router.post("/tags", (req, res) => {
   const newTag = req.body;
-  console.log(req.body);
   tagModel
     .addTag(newTag)
     .then(tag => {
-      res.status(201).json({ tag });
+      res.status(201).json({ success: "tag created" });
     })
     .catch(err => {
       console.log("post tags error", err);

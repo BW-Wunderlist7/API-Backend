@@ -21,8 +21,13 @@ module.exports = {
   getProfile,
   addProfile,
   updateProfile,
-  removeProfile
+  removeProfile,
   // TASK_TAG
+  avatar,
+  avatarURL,
+  addAvatar,
+  editAvatar,
+  deleteAvatar
 };
 
 // Users
@@ -52,8 +57,15 @@ function getTaskId(id) {
   return db("tasks").where(id);
 }
 // ADD TASK
-function addTask(taskData) {
-  return db("tasks").insert(taskData);
+function addTask(id, taskData) {
+  return db("tasks").insert({
+    task: taskData.task,
+    description: taskData.description,
+    due_date: taskData.due_date,
+    timestamp: taskData.timestamp,
+    completed: taskData.completed,
+    user_id: id
+  });
 }
 // UPDATE TASK
 function updateTask(id, taskData) {
@@ -104,8 +116,14 @@ function getProfile() {
   return db("profiles");
 }
 // ADD PROFILE
-function addProfile(profileData) {
-  return db("profiles").insert(profileData);
+function addProfile(id, profileData) {
+  return db("profiles").insert({
+    user_id: id,
+    first_name: profileData.first_name,
+    last_name: profileData.last_name,
+    age: profileData.age,
+    occupation: profileData.occupation
+  });
 }
 // UPDATE PROFILE
 function updateProfile(id, profileData) {
@@ -126,6 +144,35 @@ function getAll() {
   return db("users")
     .join("tasks", "tasks.user_id", "users.id")
     .select("*");
+}
+
+// GET AVATAR BY ID
+function avatarURL(id) {
+  return db("avatar").where(id);
+}
+
+// GET AVATAR
+function avatar() {
+  return db("avatar");
+}
+
+// POST AVATAR
+function addAvatar(id, url) {
+  console.log("id from model", id);
+  return db("avatar").insert({ user_id: id, url: url });
+}
+
+// EDIT AVATAR
+function editAvatar(id, url) {
+  return db("avatar")
+    .where(id)
+    .update(url);
+}
+
+function deleteAvatar(id) {
+  return db("avatar")
+    .where(id)
+    .delete();
 }
 
 // ** STRETCH = TASK_TAG

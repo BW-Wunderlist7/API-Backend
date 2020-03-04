@@ -1,5 +1,6 @@
 const express = require("express");
 const profileModel = require("../models/model");
+const middleware = require("../middleware/auth");
 const router = express();
 
 router.get("/profile", (req, res) => {
@@ -16,10 +17,11 @@ router.get("/profile", (req, res) => {
     });
 });
 
-router.post("/profile", (req, res) => {
+router.post("/profile", middleware, (req, res) => {
   const profile = req.body;
+  const id = req.user.id;
   profileModel
-    .addProfile(profile)
+    .addProfile(id, profile)
     .then(profileData => {
       res.status(201).json({ message: `profile has been updated` });
     })

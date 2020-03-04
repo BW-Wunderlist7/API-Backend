@@ -5,7 +5,7 @@ const generateToken = require("../token/token-generator");
 const authMiddleware = require("../middleware/auth");
 const router = express();
 
-router.get("/users", authMiddleware, (req, res) => {
+router.get("/users", (req, res) => {
   userModel
     .getUsers()
     .then(users => {

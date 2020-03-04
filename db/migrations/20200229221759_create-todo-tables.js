@@ -32,7 +32,8 @@ exports.up = function(knex) {
       tasks.increments();
       tasks.string("task").notNullable();
       tasks.string("description");
-      tasks.date("date").notNullable();
+      tasks.bigInteger("due_date");
+      tasks.bigInteger("timestamp");
       tasks.boolean("completed").defaultTo("false");
       tasks
         .integer("user_id")
@@ -54,6 +55,19 @@ exports.up = function(knex) {
         .string("tag")
         .notNullable()
         .unique();
+    })
+
+    .createTable("avatar", tbl => {
+      tbl.increments();
+      tbl.string("url").notNullable();
+      tbl
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE")
+        .onUpdate("CASCADE");
     })
 
     .createTable("tasks_tags", bridge => {
@@ -80,6 +94,7 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema
     .dropTableIfExists("tasks_tags")
+    .dropTableIfExists("avatar")
     .dropTableIfExists("tags")
     .dropTableIfExists("tasks")
     .dropTableIfExists("profiles")

@@ -1,5 +1,6 @@
 const express = require("express");
 const taskModel = require("../models/model");
+const middleware = require("../middleware/auth");
 const router = express();
 
 router.get("/tasks", (req, res) => {
@@ -29,10 +30,11 @@ router.get("/tasks/:id", (req, res) => {
     });
 });
 
-router.post("/tasks", (req, res) => {
+router.post("/tasks", middleware, (req, res) => {
   const newTask = req.body;
+  const id = req.user.id;
   taskModel
-    .addTask(newTask)
+    .addTask(id, newTask)
     .then(task => {
       res.status(201).json({ message: `your task has been created` });
     })
