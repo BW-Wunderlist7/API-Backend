@@ -36,7 +36,6 @@ router.post(
     avatarModel
       .addAvatar(id, image)
       .then(picture => {
-        console.log({ picture });
         res.status(201).json({ success: "Avatar has been uploaded" });
       })
       .catch(err => {
@@ -68,11 +67,38 @@ router.get("/avatar", middleware, (req, res) => {
   const id = req.user.id;
   avatarModel
     .avatar(id)
-    .then(all => {
-      res.status(200).json({ all });
+    .then(avatar => {
+      res.status(200).json({ avatar });
     })
     .catch(error => {
       res.status(500).json({ errorMessage: "error" });
+    });
+});
+
+router.put("/avatar", parser.single("image"), middleware, (req, res) => {
+  const id = req.user.id;
+  const image = req.file.url;
+  avatarModel
+    .editAvatar(id, image)
+    .then(edit => {
+      res.status(200).json({ message: "successfully edited avatar" });
+    })
+    .catch(err => {
+      console.log("edit avatar error", err);
+      res.status(500).json({ errorMessage: "cannot edit avatar at this time" });
+    });
+});
+
+router.delete("/avatar", middleware, (req, res) => {
+  const id = req.user.id;
+  avatarModel
+    .deleteAvatar(id)
+    .then(status => {
+      res.status(200).json({ message: "deleted" });
+    })
+    .catch(err => {
+      console.log("delete error", err);
+      res.status(500).json({ errorMessage: "cannot delete at this time" });
     });
 });
 
