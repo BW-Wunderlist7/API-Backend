@@ -60,11 +60,11 @@ https://documenter.getpostman.com/view/10342263/SzKbLuyZ?version=latest
 - Deploy to Heroku!
 - Add routers to our router index & export as one to index.js
 - Write Middleware for accessing routes
+- Attach Tags -> Tasks (task_tags)
+- Create query that joins a user's data (Profile, task, tags) `GET all`
 
 # STRETCH TO DO
 
-- Attach Tags -> Tasks (task_tags)
-- Create query that joins a user's data (Profile, task, tags) `GET all`
 - Stripe Integration - for paid version
 - Reset Password
 

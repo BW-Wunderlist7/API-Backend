@@ -24,7 +24,7 @@ router.post("/profile", middleware, (req, res) => {
   profileModel
     .addProfile(id, profile)
     .then(profileData => {
-      res.status(201).json({ message: `profile has been updated` });
+      res.status(201).json({ profile, message: `profile has been updated` });
     })
     .catch(err => {
       console.log("post error", err);
@@ -40,7 +40,7 @@ router.put("/profile/:id", (req, res) => {
     .then(updated => {
       res
         .status(200)
-        .json({ message: `successfully edited your profile data` });
+        .json({ newProfile, message: `successfully edited your profile data` });
     })
     .catch(err => {
       console.log("edit profile error", err);

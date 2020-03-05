@@ -42,7 +42,7 @@ router.post("/tags", (req, res) => {
   tagModel
     .addTag(newTag)
     .then(tag => {
-      res.status(201).json({ success: "tag created" });
+      res.status(201).json({ newTag, success: "tag created" });
     })
     .catch(err => {
       console.log("post tags error", err);
@@ -56,7 +56,7 @@ router.put("/tags/:id", (req, res) => {
   tagModel
     .updateTag({ id }, updateTag)
     .then(updatedTag => {
-      res.status(200).json({ message: "your tag has been updated" });
+      res.status(200).json({ updateTag, message: "your tag has been updated" });
     })
     .catch(err => {
       console.log("edit tags error", err);

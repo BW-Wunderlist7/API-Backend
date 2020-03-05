@@ -38,7 +38,7 @@ router.post("/tasks", middleware, (req, res) => {
     .addTask(id, newTask)
     .then(task => {
       console.log(task);
-      res.status(201).json({ id: task, success: "task posted" });
+      res.status(201).json({ newTask, successMessage: "task posted" });
     })
     .catch(err => {
       console.log("get tasks error", err);
@@ -54,7 +54,7 @@ router.put("/tasks/:id", (req, res) => {
   taskModel
     .updateTask({ id }, update)
     .then(task => {
-      res.status(200).json({ message: `your task has been updated` });
+      res.status(200).json({ update, message: `your task has been updated` });
     })
     .catch(err => {
       console.log("edit task error", err);

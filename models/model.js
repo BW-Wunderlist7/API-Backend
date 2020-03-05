@@ -64,16 +64,14 @@ function getTaskId(id) {
 }
 // ADD TASK
 function addTask(id, taskData) {
-  return db("tasks")
-    .returning({ id: "tasks.id" })
-    .insert({
-      user_id: id,
-      task: taskData.task,
-      description: taskData.description,
-      due_date: taskData.due_date,
-      timestamp: taskData.timestamp,
-      completed: taskData.completed
-    });
+  return db("tasks").insert({
+    user_id: id,
+    task: taskData.task,
+    description: taskData.description,
+    due_date: taskData.due_date,
+    timestamp: taskData.timestamp,
+    completed: taskData.completed
+  });
 }
 // UPDATE TASK
 function updateTask(id, taskData) {
