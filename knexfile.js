@@ -14,7 +14,13 @@ module.exports = {
 
   test: {
     client: "pg",
-    connection: "postgres://localhost/todo",
+    connection: {
+      host: "127.0.0.1",
+      port: "8601",
+      user: "postgres",
+      password: "42",
+      database: "todo"
+    },
     migrations: {
       directory: "./db/migrations"
     },

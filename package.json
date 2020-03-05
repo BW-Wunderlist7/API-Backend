@@ -37,7 +37,7 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
-    "cross-env": "^7.0.0",
+    "cross-env": "^7.0.1",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2",
     "supertest": "^4.0.2"

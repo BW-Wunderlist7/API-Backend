@@ -25,8 +25,8 @@ server.use("/api", avatarRouter);
 server.get("/", (req, res) => {
   res.json({ message: "SERVER IS LIVE" });
 });
+module.exports = server;
 
-// const port = 6300;
 const PORT = process.env.PORT || 8600;
 
 server.listen(PORT, () => {
