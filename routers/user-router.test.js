@@ -42,15 +42,7 @@ describe("POST /login", function() {
       .send({ email: "anotherone@gmail.com", password: "test" })
       .then(res => {
         console.log(res.body.token);
-          it("Login should return tasks", function() {
-            testToken = res.body.token;
-            return request(server)
-            .get("/api/tasks")
-            .set("authorization", testToken)
-              .then(res => {
-                expect(res.status).toBe(true);
-              });
-    })
+        testToken = res.body.token;
       });
   });
 
