@@ -64,14 +64,16 @@ function getTaskId(id) {
 }
 // ADD TASK
 function addTask(id, taskData) {
-  return db("tasks").insert({
-    user_id: id,
-    task: taskData.task,
-    description: taskData.description,
-    due_date: taskData.due_date,
-    timestamp: taskData.timestamp,
-    completed: taskData.completed
-  });
+  return db("tasks")
+    .returning({ id: "tasks.id" })
+    .insert({
+      user_id: id,
+      task: taskData.task,
+      description: taskData.description,
+      due_date: taskData.due_date,
+      timestamp: taskData.timestamp,
+      completed: taskData.completed
+    });
 }
 // UPDATE TASK
 function updateTask(id, taskData) {
@@ -169,13 +171,13 @@ function addAvatar(id, url) {
 // EDIT AVATAR
 function editAvatar(id, url) {
   return db("avatar")
-    .where(id)
-    .update(url);
+    .where({ user_id: id })
+    .update({ url: url });
 }
 
 function deleteAvatar(id) {
   return db("avatar")
-    .where(id)
+    .where({ user_id: id })
     .delete();
 }
 
