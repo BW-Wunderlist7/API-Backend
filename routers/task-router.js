@@ -38,7 +38,11 @@ router.post("/tasks", middleware, (req, res) => {
     .addTask(id, newTask)
     .then(task => {
       console.log(task);
-      res.status(201).json({ newTask, successMessage: "task posted" });
+      res.status(201).json({
+        newTask,
+        task,
+        successMessage: "task posted"
+      });
     })
     .catch(err => {
       console.log("get tasks error", err);
