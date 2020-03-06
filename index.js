@@ -27,7 +27,7 @@ server.get("/", (req, res) => {
 });
 module.exports = server;
 
-const PORT = process.env.PORT || 8600;
+const PORT = process.env.PORT || 8601;
 
 server.listen(PORT, () => {
   console.log(`server is up and running on port ${PORT}`);

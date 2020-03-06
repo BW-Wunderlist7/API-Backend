@@ -4,20 +4,14 @@ const request = require("supertest");
 const server = require("../index");
 const db = require("../db/db-config");
 let testToken;
-let testEmail = `testing_${Date.now()}@gmail.com`
+let testEmail = `testing_${Date.now()}@gmail.com`;
+let testEmail2 = `testing${Date.now()}@gmail.com`
+let testToken2;
 
 describe("user router", function() {
   it("run simple test", function() {
     expect(true).toBe(true);
   })
-
-  // describe("GET/ tasks", function() {
-  //     it("Retrieve a list of tasks", function() {
-  //         return request(server).get("/api/tasks").then(res => {
-  //             expect(res.status).toBe(401)
-  //         })
-  //     });
-  // });
 });
 
 describe("POST /register", function() {
@@ -26,6 +20,7 @@ describe("POST /register", function() {
     .post("/api/register")
     .send({ email: testEmail, password: "test" })
     .then(res => {
+      console.log("~~~ERROR~~~",testEmail)
       expect(res.status).toBe(201)
     })
     .then(res => {
@@ -58,4 +53,48 @@ describe("POST /login", function() {
   });
 });
 
-// describe("POST /register", function() {});
+// describe("API functionality for tasks data", function() {
+
+//   it("Should register this user", function() {
+//     return request(server)
+//     .post("/api/register")
+//     .send({ email: testEmail, password: "test" })
+//     .then(res => {
+//       console.log("HEREs THE ISSUE", res);
+//       testToken = res.body.token;
+//       expect(res.status).toBe(201)
+//   })
+//   })
+
+  
+// });
+
+describe("API Functionality for retrieving Tasks", function() {
+  // testToken2 = res.body.token;
+
+  it("Should return a 201 status", function() {
+    return request(server)
+    .post("/api/register")
+    .send({ email: testEmail2, password: "test" })
+    .then(res => {
+      testToken2 = res.body.token;
+      console.log("~~~ERROR~~~",testEmail)
+      expect(res.status).toBe(201)
+    })
+    .then(res => {
+      return db("tasks")
+    })
+  })
+
+  it("Get a list of tasks", function() {
+    return request(server)
+    .get(`/api/tasks`);
+    testToken2 = res.body.token
+    .set("Authorization", testToken2)
+    .then(res => {
+      console.log("ARRAY CONSOLELOG",testToken2);
+      expect(Array.isArray(res.body).toBe(true));
+    })
+  })
+});
+
