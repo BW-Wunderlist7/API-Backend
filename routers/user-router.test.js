@@ -7,6 +7,7 @@ let testToken;
 let testEmail = `testing_${Date.now()}@gmail.com`;
 let testEmail2 = `testing${Date.now()}@gmail.com`
 let testToken2;
+let testTask = `Testing_${Date.now()}`;
 
 describe("user router", function() {
   it("run simple test", function() {
@@ -94,6 +95,18 @@ describe("API Functionality for retrieving Tasks", function() {
     .then(res => {
       console.log("ARRAY CONSOLELOG",testToken2);
       expect(Array.isArray(res.body).toBe(true));
+    })
+  })
+
+  it("Adds a new task", function() {
+    return request(server)
+    .post(`/api/tasks`)
+    testToken2 = res.body.token
+    .set("Authorization", testToken2)
+    .send({ task: testTask, description: "testing 1,2,3" })
+    .then(res => {
+      let testTaskId = res.body
+      expect(Array.isArray(res.body).toBe(true))
     })
   })
 });
